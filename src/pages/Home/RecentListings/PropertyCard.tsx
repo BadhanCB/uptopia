@@ -21,14 +21,15 @@ type Props = {};
 const PropertyCard = (props: Props) => {
     return (
         <Card className="text-start">
-            <AspectRatio ratio={16 / 9}>
+            <AspectRatio ratio={4 / 3} className="overflow-hidden">
                 <Image
                     src={house}
                     alt="property image"
+                    fill
                     className="object-cover rounded"
                 />
             </AspectRatio>
-            <CardHeader className="mt-8 pb-3">
+            <CardHeader className="py-3">
                 <CardTitle className="text-xl">Apartment in New York</CardTitle>
                 <p className="text-lg text-sky-600 flex items-center font-medium">
                     <TbCurrencyTaka className="text-xl" /> 10,00,000
