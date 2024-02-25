@@ -2,7 +2,7 @@ import PropertySlider from "./PropertySlider";
 
 const RecentListings = () => {
     return (
-        <section className="text-center py-12 bg-gray-50">
+        <section className="text-center py-12 md:py-16 lg:py-20 bg-gray-50">
             <div className="wrapper">
                 <h1 className="capitalize text-3xl font-medium mb-4">
                     recent listings

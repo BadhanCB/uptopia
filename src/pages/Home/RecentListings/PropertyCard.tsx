@@ -25,8 +25,7 @@ const PropertyCard = (props: Props) => {
                 <Image
                     src={house}
                     alt="property image"
-                    fill
-                    className="object-cover rounded"
+                    className="object-cover rounded h-full w-full"
                 />
             </AspectRatio>
             <CardHeader className="py-3">
@@ -61,9 +60,8 @@ const PropertyCard = (props: Props) => {
                         <Image
                             src={placeholder}
                             alt="agent"
-                            fill
                             quality={50}
-                            className="object-cover"
+                            className="object-cover h-full w-full"
                         />
                     </div>
                     <p>Mark Anderson</p>
