@@ -1,7 +1,11 @@
+import RecentListings from "@/pages/Home/RecentListings/RecentListings";
+
 export default function Home() {
     return (
-        <main className="wrapper">
-            <h1>This is Home</h1>
+        <main className="bg-gray-50">
+            <section className="wrapper">
+                <RecentListings />
+            </section>
         </main>
     );
 }
