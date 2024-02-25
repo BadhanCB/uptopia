@@ -19,7 +19,7 @@ const CategoryCard = ({
     return (
         <Link
             href={slug}
-            className={`${className} relative cursor-pointer text-gray-50 group overflow-hidden rounded`}
+            className={`${className} relative cursor-pointer text-gray-50 group overflow-hidden rounded shadow-xl`}
         >
             <div className="absolute h-full w-full -z-20">
                 <Image
