@@ -23,6 +23,7 @@ const PropertyCard = (props: Props) => {
         <Card className="text-start">
             <AspectRatio ratio={4 / 3} className="overflow-hidden">
                 <Image
+                    placeholder="blur"
                     src={house}
                     alt="property image"
                     className="object-cover rounded h-full w-full"

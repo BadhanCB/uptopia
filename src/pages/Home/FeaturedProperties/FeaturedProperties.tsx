@@ -1,4 +1,5 @@
 import SectionHeader from "@/components/shared/SectionHeader/SectionHeader";
+import PropertiesCardArea from "./PropertiesCardArea";
 
 const FeaturedProperties = () => {
     return (
@@ -8,6 +9,7 @@ const FeaturedProperties = () => {
                     title="Featured Properties"
                     description="Here are four listings that are displayed using the featured property shorcode. Use this shortcode when you have some special listings to showcase."
                 />
+                <PropertiesCardArea />
             </div>
         </section>
     );

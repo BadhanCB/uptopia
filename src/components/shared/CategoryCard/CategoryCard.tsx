@@ -23,6 +23,7 @@ const CategoryCard = ({
         >
             <div className="absolute h-full w-full -z-20">
                 <Image
+                    placeholder="blur"
                     src={imgUrl}
                     alt={title}
                     className="object-cover object-center h-full w-full"
