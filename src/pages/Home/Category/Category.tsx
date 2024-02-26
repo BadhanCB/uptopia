@@ -1,5 +1,5 @@
-import CategoryCard from "@/components/shared/CategoryCard/CategoryCard";
-import { categories } from "@/lib/constants";
+import OptionCard from "@/components/shared/OptionCard/OptionCard";
+import { propertyTypes } from "@/lib/constants";
 
 const Category = () => {
     return (
@@ -11,20 +11,20 @@ const Category = () => {
                     Doloribus, maxime!
                 </p>
             </div>
-            <CategoryCard
-                category={categories[0]}
+            <OptionCard
+                option={propertyTypes[0]}
                 className="col-span-3 md:col-span-1 md:row-span-2"
             />
-            <CategoryCard
-                category={categories[1]}
+            <OptionCard
+                option={propertyTypes[1]}
                 className="col-span-3 md:col-span-1"
             />
-            <CategoryCard
-                category={categories[2]}
+            <OptionCard
+                option={propertyTypes[2]}
                 className="col-span-3 md:col-span-1"
             />
-            <CategoryCard
-                category={categories[3]}
+            <OptionCard
+                option={propertyTypes[3]}
                 className="col-span-3 md:col-span-1"
             />
             <div className="col-span-3 md:col-span-1 p-4 self-center">
@@ -34,12 +34,12 @@ const Category = () => {
                     Doloribus, maxime!
                 </p>
             </div>
-            <CategoryCard
-                category={categories[4]}
+            <OptionCard
+                option={propertyTypes[4]}
                 className="col-span-3 md:col-span-1"
             />
-            <CategoryCard
-                category={categories[5]}
+            <OptionCard
+                option={propertyTypes[5]}
                 className="col-span-3 md:col-span-1"
             />
         </section>

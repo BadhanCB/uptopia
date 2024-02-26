@@ -5,7 +5,7 @@ import villaImg from "@/assets/img/villa.jpg";
 import officeImg from "@/assets/img/office.jpg";
 import shopImg from "@/assets/img/shop.jpg";
 
-const categories = [
+const propertyTypes = [
     {
         imgUrl: studioImg,
         title: "studio",
@@ -45,4 +45,31 @@ const categories = [
     },
 ];
 
-export { categories };
+const cities = [
+    {
+        imgUrl: appartmentImg,
+        title: "Dhaka",
+        slug: "/city/Dhaka",
+        totalPropertirs: 24,
+    },
+    {
+        imgUrl: villaImg,
+        title: "chittagong",
+        slug: "/city/chittagong",
+        totalPropertirs: 6,
+    },
+    {
+        imgUrl: officeImg,
+        title: "rangpur",
+        slug: "/city/rangpur",
+        totalPropertirs: 17,
+    },
+    {
+        imgUrl: shopImg,
+        title: "sylhet",
+        slug: "/city/sylhet",
+        totalPropertirs: 28,
+    },
+];
+
+export { propertyTypes, cities };

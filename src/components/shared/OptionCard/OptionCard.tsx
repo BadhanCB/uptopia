@@ -3,18 +3,18 @@ import Link from "next/link";
 import { FiPlay } from "react-icons/fi";
 
 type Props = {
-    category: {
+    option: {
         imgUrl: StaticImageData;
         title: string;
         slug: string;
         totalPropertirs: number;
     };
-    className: string;
+    className?: string;
 };
 
-const CategoryCard = ({
+const OptionCard = ({
     className,
-    category: { imgUrl, slug, title, totalPropertirs },
+    option: { imgUrl, slug, title, totalPropertirs },
 }: Props) => {
     return (
         <Link
@@ -45,4 +45,4 @@ const CategoryCard = ({
     );
 };
 
-export default CategoryCard;
+export default OptionCard;
