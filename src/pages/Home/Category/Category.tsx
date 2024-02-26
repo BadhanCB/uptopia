@@ -1,5 +1,5 @@
+import CategoryCard from "@/components/shared/CategoryCard/CategoryCard";
 import { categories } from "@/lib/constants";
-import CategoryCard from "./CategoryCard";
 
 const Category = () => {
     return (
