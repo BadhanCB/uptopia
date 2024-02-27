@@ -18,11 +18,13 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-leaflet": "^4.2.1",
     "swiper": "^11.0.6",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.8",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

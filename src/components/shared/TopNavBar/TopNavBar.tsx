@@ -2,9 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo/logo.svg";
 
-const TopNavBar = () => {
+type Props = {
+    className: string;
+};
+
+const TopNavBar = ({ className }: Props) => {
     return (
-        <header>
+        <header className={`w-full z-50 ${className}`}>
             <nav className="wrapper py-4">
                 <ul className="flex justify-between items-center">
                     <div>

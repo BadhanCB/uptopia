@@ -4,7 +4,6 @@ import "./globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import TopNavBar from "@/components/shared/TopNavBar/TopNavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <TopNavBar />
-                {children}
-            </body>
+            <body className={inter.className}>{children}</body>
         </html>
     );
 }
