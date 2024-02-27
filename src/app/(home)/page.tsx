@@ -1,9 +1,9 @@
-import Category from "@/pages/Home/Category/Category";
-import ExploreCities from "@/pages/Home/ExploreCities/ExploreCities";
-import FeaturedProperties from "@/pages/Home/FeaturedProperties/FeaturedProperties";
-import MostViewedProperties from "@/pages/Home/MostViewedProperties/MostViewedProperties";
-import RecentListings from "@/pages/Home/RecentListings/RecentListings";
-import TopMapBanner from "@/pages/Home/TopMapBanner/TopMapBanner";
+import Category from "@/components/Home/Category/Category";
+import ExploreCities from "@/components/Home/ExploreCities/ExploreCities";
+import FeaturedProperties from "@/components/Home/FeaturedProperties/FeaturedProperties";
+import MostViewedProperties from "@/components/Home/MostViewedProperties/MostViewedProperties";
+import RecentListings from "@/components/Home/RecentListings/RecentListings";
+import TopMapBanner from "@/components/Home/TopMapBanner/TopMapBanner";
 
 export default function Home() {
     return (

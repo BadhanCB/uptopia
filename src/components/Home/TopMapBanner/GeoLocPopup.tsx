@@ -1,3 +1,4 @@
+"use client";
 import { LatLngExpression } from "leaflet";
 import Image, { StaticImageData } from "next/image";
 import { TbCarGarage, TbCurrencyTaka } from "react-icons/tb";

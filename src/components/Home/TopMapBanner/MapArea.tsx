@@ -1,11 +1,16 @@
 "use client";
+import dynamic from "next/dynamic";
 import { LatLngExpression } from "leaflet";
 import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet/dist/leaflet.js";
-import PropertyGeoLocationMarker from "./PropertyGeoLocationMarker";
 import propertyImg from "@/assets/img/house.jpg";
 import { StaticImageData } from "next/image";
+const PropertyGeoLocationMarker = dynamic(
+    () => import("./PropertyGeoLocationMarker"),
+    {
+        ssr: false,
+        loading: () => <p>Loading...</p>,
+    }
+);
 
 const MapArea = () => {
     const geoPosition: LatLngExpression = [23.78, 90.39];
