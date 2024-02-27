@@ -6,8 +6,10 @@ type Props = {
 const SectionHeader = ({ title, description }: Props) => {
     return (
         <>
-            <h1 className="capitalize text-3xl font-medium mb-4">{title}</h1>
-            <p className="md:w-3/4 lg:w-2/4 mx-auto text-gray-500">
+            <h1 className="capitalize text-3xl font-medium mb-4 text-center">
+                {title}
+            </h1>
+            <p className="md:w-3/4 lg:w-2/4 mx-auto text-gray-500 text-center">
                 {description}
             </p>
         </>
