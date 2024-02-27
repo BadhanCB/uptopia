@@ -17,8 +17,8 @@ const SearchBar = () => {
     const [priceRange, setPriceRange] = useState(35000);
 
     return (
-        <Card className="absolute z-20 left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 border-none shadow-2xl">
-            <CardContent className="pt-6 flex flex-wrap justify-evenly gap-6 w-max max-w-[90vw]">
+        <Card className="absolute z-20 left-1/2 bottom-0 -translate-x-1/2 md:translate-y-1/4 lg:translate-y-1/2 border-none shadow-xl">
+            <CardContent className="pt-6 flex flex-wrap justify-evenly gap-6 w-max max-w-[95vw]">
                 <Select>
                     <SelectTrigger className="w-[150px]">
                         <SelectValue placeholder="Select Status" />
@@ -67,7 +67,7 @@ const SearchBar = () => {
                         </SelectGroup>
                     </SelectContent>
                 </Select>
-                <div className="w-[280px]">
+                <div className="w-[200px]">
                     <div className="w-full flex justify-between items-center">
                         <p>Price:</p> <p>{priceRange}</p>
                     </div>
