@@ -9,6 +9,7 @@ import { loginWithEmailAndPassword } from "@/lib/fetchers";
 import { FiLoader } from "react-icons/fi";
 import { LoginResponse } from "@/lib/types";
 import useAuth from "@/hooks/useAuth";
+import { createJWT } from "@/lib/utils";
 
 const LoginForm = () => {
     const { toast } = useToast();
@@ -37,8 +38,9 @@ const LoginForm = () => {
             );
 
             toast({ description: resData.message });
-            setIsLoading(false);
+            await createJWT(resData.data);
             setUser(resData.data);
+            setIsLoading(false);
             router.replace("/");
         } catch (error) {
             let errMsg;
