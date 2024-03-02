@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo/logo.svg";
 import AuthOptions from "./AuthOptions";
+import PrivateRouteLink from "./PrivateRouteLink";
 
 type Props = {
     className: string;
@@ -44,6 +45,7 @@ const TopNavBar = ({ className }: Props) => {
                         <li>
                             <Link href="/contact">Contact</Link>
                         </li>
+                        <PrivateRouteLink />
                     </div>
                     <AuthOptions />
                 </ul>

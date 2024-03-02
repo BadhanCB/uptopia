@@ -4,7 +4,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-const layout = ({ children }: Props) => {
+const LayoutWithNavbar = ({ children }: Props) => {
     return (
         <>
             <TopNavBar className="bg-gray-50" />
@@ -13,4 +13,4 @@ const layout = ({ children }: Props) => {
     );
 };
 
-export default layout;
+export default LayoutWithNavbar;
