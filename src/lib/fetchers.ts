@@ -1,4 +1,4 @@
-import { SignupInfo } from "./types";
+import { LoginInfo, SignupInfo } from "./types";
 
 const signupWithEmailAndPassword = async (info: SignupInfo) => {
     const res = await fetch("http://localhost:3000/api/signup", {
@@ -22,4 +22,26 @@ const signupWithEmailAndPassword = async (info: SignupInfo) => {
     return res.json();
 };
 
-export { signupWithEmailAndPassword };
+const loginWithEmailAndPassword = async (info: LoginInfo) => {
+    const res = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        body: JSON.stringify(info),
+    });
+
+    if (!res.ok) {
+        let errMsg: string;
+        errMsg = (await res.json()).message;
+        if (!errMsg) {
+            errMsg = res.statusText;
+        } else if (!errMsg) {
+            errMsg = "Failed to Login";
+        }
+
+        throw new Error(errMsg);
+        return;
+    }
+
+    return res.json();
+};
+
+export { signupWithEmailAndPassword, loginWithEmailAndPassword };

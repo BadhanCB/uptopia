@@ -1,14 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo/logo.svg";
-import { Button } from "@/components/ui/button";
-import { LuLogIn } from "react-icons/lu";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+import AuthOptions from "./AuthOptions";
 
 type Props = {
     className: string;
@@ -52,22 +45,7 @@ const TopNavBar = ({ className }: Props) => {
                             <Link href="/contact">Contact</Link>
                         </li>
                     </div>
-                    <div className="flex gap-6 justify-end items-center">
-                        <li>
-                            <TooltipProvider>
-                                <Tooltip delayDuration={1}>
-                                    <TooltipTrigger>
-                                        <Link href="/login">
-                                            <LuLogIn className="text-2xl" />
-                                        </Link>
-                                    </TooltipTrigger>
-                                    <TooltipContent className="bg-gray-900 text-gray-50">
-                                        Login
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-                        </li>
-                    </div>
+                    <AuthOptions />
                 </ul>
             </nav>
         </header>
