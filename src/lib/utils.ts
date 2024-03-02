@@ -21,3 +21,12 @@ export const createJWT = async (payload: User) => {
         console.log(error);
     }
 };
+
+export const authenticateWithJWT = async () => {
+    try {
+        const res = await fetch("http://localhost:3000/api/jwt");
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};

@@ -1,9 +1,9 @@
-const Profile = () => {
+const AddProperty = () => {
     return (
         <section className="md:col-span-9 lg:col-span-10">
-            <h1>Profile</h1>
+            <h1>Add Property</h1>
         </section>
     );
 };
 
-export default Profile;
+export default AddProperty;
