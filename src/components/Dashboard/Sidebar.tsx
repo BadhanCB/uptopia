@@ -3,7 +3,7 @@ import Link from "next/link";
 const Sidebar = () => {
     return (
         <aside className="md:col-span-3 lg:col-span-2 gap-6">
-            <ul>
+            <ul className="flex flex-wrap md:grid gap-6">
                 <li>
                     <Link href="/dashboard">Profile</Link>
                 </li>
