@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
 import Image from "next/image";
 import {
     ChangeEvent,
@@ -19,13 +20,23 @@ type Props = {
 };
 
 const ImageInputFields = ({ imgFiles, setImgFiles }: Props) => {
+    const { toast } = useToast();
+
     const handleChange: ChangeEventHandler<HTMLInputElement> = (
         e: ChangeEvent<HTMLInputElement>
     ) => {
         const files = e.target.files;
         if (!files || files.length === 0) return;
 
-        setImgFiles((prev) => [...prev, files[0]]);
+        if (imgFiles.length >= 5 || imgFiles.length + files.length > 5) {
+            toast({
+                title: "Please Select only 5 images",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        setImgFiles((prev) => [...prev, ...Array.from(files)]);
     };
 
     const handleRemove = (index: number) => {
@@ -35,7 +46,11 @@ const ImageInputFields = ({ imgFiles, setImgFiles }: Props) => {
     return (
         <div>
             <h3 className="text-gray-500 mb-2">
-                Images <small>(at least one image is required)</small>
+                Images{" "}
+                <small>
+                    (at least one image is required and max 5 images can be
+                    uploaded)
+                </small>
             </h3>
             <div className="flex flex-wrap gap-6">
                 {imgFiles &&
@@ -50,14 +65,11 @@ const ImageInputFields = ({ imgFiles, setImgFiles }: Props) => {
                                 fill
                                 className="object-contain"
                             />
-                            <Button
-                                className="absolute bottom-0 right-0"
-                                size="icon"
-                                variant="outline"
+
+                            <MdDelete
                                 onClick={() => handleRemove(i)}
-                            >
-                                <MdDelete className="text-2xl text-lime-600" />
-                            </Button>
+                                className="text-2xl text-lime-600 absolute bottom-0 right-0 p-0.5 cursor-pointer"
+                            />
                         </div>
                     ))}
                 <Label htmlFor="images" className="w-fit">
@@ -72,6 +84,8 @@ const ImageInputFields = ({ imgFiles, setImgFiles }: Props) => {
                     type="file"
                     className="hidden"
                     onChange={handleChange}
+                    accept="image/*"
+                    multiple
                 />
             </div>
         </div>

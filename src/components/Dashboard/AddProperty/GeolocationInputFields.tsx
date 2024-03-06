@@ -40,6 +40,7 @@ const GeolocationInputFields = () => {
                         name="latitude"
                         value={geolocation[0]}
                         readOnly
+                        className="bg-gray-100"
                     />
                 </div>
                 <div className="grid w-full max-w-xs items-center gap-1.5">
@@ -50,6 +51,7 @@ const GeolocationInputFields = () => {
                         name="longitude"
                         value={geolocation[1]}
                         readOnly
+                        className="bg-gray-100"
                     />
                 </div>
             </div>

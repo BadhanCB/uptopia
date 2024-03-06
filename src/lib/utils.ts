@@ -30,3 +30,6 @@ export const authenticateWithJWT = async () => {
         console.log(error);
     }
 };
+
+export const slugify = (payload: string) =>
+    payload.toLowerCase().split(" ").join("-") + "-" + Date.now();

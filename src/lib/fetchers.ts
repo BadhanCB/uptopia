@@ -44,4 +44,30 @@ const loginWithEmailAndPassword = async (info: LoginInfo) => {
     return res.json();
 };
 
-export { signupWithEmailAndPassword, loginWithEmailAndPassword };
+const createNewProperty = async (formData: FormData) => {
+    const res = await fetch("http://localhost:3000/api/property", {
+        method: "POST",
+        body: formData,
+    });
+
+    if (!res.ok) {
+        let errMsg: string;
+        errMsg = (await res.json()).message;
+        if (!errMsg) {
+            errMsg = res.statusText;
+        } else if (!errMsg) {
+            errMsg = "Failed to Login";
+        }
+
+        throw new Error(errMsg);
+        return;
+    }
+
+    return res.json();
+};
+
+export {
+    signupWithEmailAndPassword,
+    loginWithEmailAndPassword,
+    createNewProperty,
+};
