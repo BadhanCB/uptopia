@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const createJWT = async (payload: User) => {
     try {
-        const res = await fetch("http://localhost:3000/api/jwt", {
+        const res = await fetch(`https://${process.env.VERCEL_URL}/api/jwt`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -18,16 +18,24 @@ export const createJWT = async (payload: User) => {
 
         return res.json();
     } catch (error) {
-        console.log(error);
+        let errMsg = "Failed to Create JWT Token";
+        if (error instanceof Error) {
+            errMsg = error.message;
+        }
+        throw new Error(errMsg);
     }
 };
 
 export const authenticateWithJWT = async () => {
     try {
-        const res = await fetch("http://localhost:3000/api/jwt");
+        const res = await fetch(`https://${process.env.VERCEL_URL}/api/jwt`);
         return res.json();
     } catch (error) {
-        console.log(error);
+        let errMsg = "Failed to authenticate";
+        if (error instanceof Error) {
+            errMsg = error.message;
+        }
+        throw new Error(errMsg);
     }
 };
 

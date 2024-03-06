@@ -11,8 +11,12 @@ const AuthProvider = ({ children }: Props) => {
 
     useEffect(() => {
         const authenticate = async () => {
-            const newUser = await authenticateWithJWT();
-            setUser(newUser);
+            try {
+                const newUser = await authenticateWithJWT();
+                setUser(newUser);
+            } catch (error) {
+                return;
+            }
         };
 
         authenticate();

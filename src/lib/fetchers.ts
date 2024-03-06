@@ -1,7 +1,7 @@
 import { LoginInfo, SignupInfo } from "./types";
 
 const signupWithEmailAndPassword = async (info: SignupInfo) => {
-    const res = await fetch("http://localhost:3000/api/signup", {
+    const res = await fetch(`https://${process.env.VERCEL_URL}/api/signup`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -23,7 +23,7 @@ const signupWithEmailAndPassword = async (info: SignupInfo) => {
 };
 
 const loginWithEmailAndPassword = async (info: LoginInfo) => {
-    const res = await fetch("http://localhost:3000/api/login", {
+    const res = await fetch(`https://${process.env.VERCEL_URL}/api/login`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -45,7 +45,7 @@ const loginWithEmailAndPassword = async (info: LoginInfo) => {
 };
 
 const createNewProperty = async (formData: FormData) => {
-    const res = await fetch("http://localhost:3000/api/property", {
+    const res = await fetch(`https://${process.env.VERCEL_URL}/api/property`, {
         method: "POST",
         body: formData,
     });
