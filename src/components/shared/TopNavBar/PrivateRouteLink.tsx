@@ -7,7 +7,7 @@ const PrivateRouteLink = () => {
 
     return (
         <>
-            {user.email && (
+            {user && (
                 <li>
                     <Link href="/dashboard">Dashboard</Link>
                 </li>
