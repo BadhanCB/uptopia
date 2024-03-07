@@ -1,7 +1,8 @@
 import cloudinary from "@/lib/configs/cloudinary.config";
 import connectMongoClient from "@/lib/mongodb";
 import { slugify } from "@/lib/utils";
-import { unlink, writeFile } from "fs/promises";
+import { existsSync } from "fs";
+import { mkdir, unlink, writeFile } from "fs/promises";
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
@@ -97,6 +98,10 @@ export const POST = async (request: NextRequest) => {
             "-" +
             Date.now() +
             fileExt;
+
+        if (!existsSync("./tmp-img")) {
+            await mkdir("./tmp-img");
+        }
         const path = `./tmp-img/${fileName}`;
         await writeFile(path, bufferImage);
 
