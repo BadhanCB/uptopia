@@ -99,10 +99,10 @@ export const POST = async (request: NextRequest) => {
             Date.now() +
             fileExt;
 
-        if (!existsSync("./tmp-img")) {
-            await mkdir("./tmp-img");
+        if (!existsSync("/tmp")) {
+            await mkdir("/tmp");
         }
-        const path = `./tmp-img/${fileName}`;
+        const path = `/tmp/${fileName}`;
         await writeFile(path, bufferImage);
 
         const result = await cloudinary.uploader.upload(path, {
