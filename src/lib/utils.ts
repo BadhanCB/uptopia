@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const createJWT = async (payload: User) => {
     try {
-        const res = await fetch("https://uptopia.vercel.app/api/jwt", {
+        const res = await fetch("http://localhost:3000/api/jwt", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -28,7 +28,7 @@ export const createJWT = async (payload: User) => {
 
 export const authenticateWithJWT = async () => {
     try {
-        const res = await fetch(`https://uptopia.vercel.app/api/jwt`);
+        const res = await fetch(`http://localhost:3000/api/jwt`);
         return res.json();
     } catch (error) {
         let errMsg = "Failed to authenticate";

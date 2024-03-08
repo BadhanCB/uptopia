@@ -4,8 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import PropertyCard from "./PropertyCard";
 import { A11y, Autoplay, Navigation, Pagination } from "swiper/modules";
 import { useState } from "react";
+import { Property } from "@/lib/types";
 
-const PropertySlider = () => {
+type Props = {
+    latestProperties: Property[];
+};
+
+const PropertySlider = ({ latestProperties }: Props) => {
     const [swiperRef, setSwiperRef] = useState<any>(null);
 
     const prevHandler = () => {
@@ -34,7 +39,7 @@ const PropertySlider = () => {
             </div>
             <Swiper
                 slidesPerView={1}
-                spaceBetween={30}
+                spaceBetween={10}
                 modules={[Autoplay, Navigation, Pagination, A11y]}
                 autoplay={{ delay: 3000 }}
                 loop={true}
@@ -44,29 +49,18 @@ const PropertySlider = () => {
                 }}
                 onSwiper={(swiper) => setSwiperRef(swiper)}
                 breakpoints={{
-                    768: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 },
-                    1920: { slidesPerView: 4 },
+                    768: { slidesPerView: 2, spaceBetween: 15 },
+                    1024: { slidesPerView: 3, spaceBetween: 20 },
+                    1920: { slidesPerView: 4, spaceBetween: 25 },
                 }}
             >
-                <SwiperSlide>
-                    <PropertyCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <PropertyCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <PropertyCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <PropertyCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <PropertyCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <PropertyCard />
-                </SwiperSlide>
+                {latestProperties &&
+                    latestProperties?.length &&
+                    latestProperties.map((lp) => (
+                        <SwiperSlide key={lp._id} className="py-4">
+                            <PropertyCard property={lp} />
+                        </SwiperSlide>
+                    ))}
             </Swiper>
             <div className="recent-listing-slider-pagination" />
         </div>

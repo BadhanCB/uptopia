@@ -4,9 +4,45 @@ import { slugify } from "@/lib/utils";
 import { existsSync } from "fs";
 import { mkdir, unlink, writeFile } from "fs/promises";
 import { jwtVerify } from "jose";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import { extname } from "path";
+
+export const GET = async () => {
+    try {
+        const client = await connectMongoClient();
+        const propertiesCollection = client
+            .db("uptopia")
+            .collection("properties");
+
+        const cursor = propertiesCollection.find({}).project({
+            imageUrl: 1,
+            title: 1,
+            price: 1,
+            propertySize: 1,
+            bedrooms: 1,
+            bathrooms: 1,
+            garages: 1,
+            address: 1,
+            geolocation: 1,
+            status: 1,
+            propertyType: 1,
+            slug: 1,
+            realtor: 1,
+            createdAt: 1,
+        });
+        const result = await cursor.toArray();
+
+        return NextResponse.json(result, { status: 200 });
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json(
+            { message: "Internal Server Error" },
+            { status: 500 }
+        );
+    }
+};
 
 export const POST = async (request: NextRequest) => {
     try {
@@ -129,9 +165,9 @@ export const POST = async (request: NextRequest) => {
             division,
             zip,
             country,
-            geolocation: [latitude, longitude],
             status,
             propertyType,
+            geolocation: [latitude, longitude],
             slug: slugify(title),
             realtor: {
                 name,
@@ -139,6 +175,7 @@ export const POST = async (request: NextRequest) => {
             },
             viewCount: 0,
             isFeatured: false,
+            createdAt: new Date(),
         };
 
         const mongoResult = await propertiesCollection.insertOne(newProperty);
@@ -150,6 +187,7 @@ export const POST = async (request: NextRequest) => {
             );
         }
 
+        revalidateTag("latest");
         return NextResponse.json(
             { message: "New Property Listing Created" },
             { status: 201 }

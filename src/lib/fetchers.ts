@@ -1,7 +1,7 @@
 import { LoginInfo, SignupInfo } from "./types";
 
 const signupWithEmailAndPassword = async (info: SignupInfo) => {
-    const res = await fetch(`https://uptopia.vercel.app/api/signup`, {
+    const res = await fetch(`http://localhost:3000/api/signup`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -23,7 +23,7 @@ const signupWithEmailAndPassword = async (info: SignupInfo) => {
 };
 
 const loginWithEmailAndPassword = async (info: LoginInfo) => {
-    const res = await fetch(`https://uptopia.vercel.app/api/login`, {
+    const res = await fetch(`http://localhost:3000/api/login`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -45,7 +45,7 @@ const loginWithEmailAndPassword = async (info: LoginInfo) => {
 };
 
 const createNewProperty = async (formData: FormData) => {
-    const res = await fetch(`https://uptopia.vercel.app/api/property`, {
+    const res = await fetch(`http://localhost:3000/api/properties`, {
         method: "POST",
         body: formData,
     });
@@ -56,7 +56,7 @@ const createNewProperty = async (formData: FormData) => {
         if (!errMsg) {
             errMsg = res.statusText;
         } else if (!errMsg) {
-            errMsg = "Failed to Login";
+            errMsg = "Failed to Create New Property";
         }
 
         throw new Error(errMsg);
@@ -66,8 +66,74 @@ const createNewProperty = async (formData: FormData) => {
     return res.json();
 };
 
+const getProperties = async () => {
+    try {
+        const res = await fetch(`http://localhost:3000/api/properties`, {
+            cache: "no-cache",
+        });
+
+        if (!res.ok) {
+            let errMsg: string;
+            errMsg = (await res.json()).message;
+            if (!errMsg) {
+                errMsg = res.statusText;
+            } else if (!errMsg) {
+                errMsg = "Failed to Fetch Properties Data";
+            }
+
+            throw new Error(errMsg);
+            return;
+        }
+
+        return res.json();
+    } catch (error) {
+        let errMsg: string;
+        if (error instanceof Error) {
+            errMsg = error.message;
+        } else {
+            errMsg = "Failed to Fetch Properties Data";
+        }
+
+        throw new Error(errMsg);
+    }
+};
+
+const getLatestProperties = async () => {
+    try {
+        const res = await fetch(`http://localhost:3000/api/properties/latest`, {
+            next: { tags: ["latest"] },
+        });
+
+        if (!res.ok) {
+            let errMsg: string;
+            errMsg = (await res.json()).message;
+            if (!errMsg) {
+                errMsg = res.statusText;
+            } else if (!errMsg) {
+                errMsg = "Failed to Fetch Latest Properties Data";
+            }
+
+            throw new Error(errMsg);
+            return;
+        }
+
+        return res.json();
+    } catch (error) {
+        let errMsg: string;
+        if (error instanceof Error) {
+            errMsg = error.message;
+        } else {
+            errMsg = "Failed to Fetch latest Properties Data";
+        }
+
+        throw new Error(errMsg);
+    }
+};
+
 export {
     signupWithEmailAndPassword,
     loginWithEmailAndPassword,
     createNewProperty,
+    getProperties,
+    getLatestProperties,
 };
