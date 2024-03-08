@@ -1,7 +1,7 @@
 import { LoginInfo, SignupInfo } from "./types";
 
 const signupWithEmailAndPassword = async (info: SignupInfo) => {
-    const res = await fetch(`${process.env.BASE_URL}/api/signup`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/signup`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -23,7 +23,7 @@ const signupWithEmailAndPassword = async (info: SignupInfo) => {
 };
 
 const loginWithEmailAndPassword = async (info: LoginInfo) => {
-    const res = await fetch(`${process.env.BASE_URL}/api/login`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -45,10 +45,13 @@ const loginWithEmailAndPassword = async (info: LoginInfo) => {
 };
 
 const createNewProperty = async (formData: FormData) => {
-    const res = await fetch(`${process.env.BASE_URL}/api/properties`, {
-        method: "POST",
-        body: formData,
-    });
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`,
+        {
+            method: "POST",
+            body: formData,
+        }
+    );
 
     if (!res.ok) {
         let errMsg: string;
@@ -68,9 +71,12 @@ const createNewProperty = async (formData: FormData) => {
 
 const getProperties = async () => {
     try {
-        const res = await fetch(`${process.env.BASE_URL}/api/properties`, {
-            cache: "no-cache",
-        });
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`,
+            {
+                cache: "no-cache",
+            }
+        );
 
         if (!res.ok) {
             let errMsg: string;
@@ -101,7 +107,7 @@ const getProperties = async () => {
 const getLatestProperties = async () => {
     try {
         const res = await fetch(
-            `${process.env.BASE_URL}/api/properties/latest`,
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties/latest`,
             {
                 next: { tags: ["latest"] },
             }
