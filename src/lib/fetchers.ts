@@ -1,7 +1,7 @@
 import { LoginInfo, SignupInfo } from "./types";
 
 const signupWithEmailAndPassword = async (info: SignupInfo) => {
-    const res = await fetch(`http://localhost:3000/api/signup`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/signup`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -23,7 +23,7 @@ const signupWithEmailAndPassword = async (info: SignupInfo) => {
 };
 
 const loginWithEmailAndPassword = async (info: LoginInfo) => {
-    const res = await fetch(`http://localhost:3000/api/login`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/login`, {
         method: "POST",
         body: JSON.stringify(info),
     });
@@ -45,7 +45,7 @@ const loginWithEmailAndPassword = async (info: LoginInfo) => {
 };
 
 const createNewProperty = async (formData: FormData) => {
-    const res = await fetch(`http://localhost:3000/api/properties`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/properties`, {
         method: "POST",
         body: formData,
     });
@@ -68,7 +68,7 @@ const createNewProperty = async (formData: FormData) => {
 
 const getProperties = async () => {
     try {
-        const res = await fetch(`http://localhost:3000/api/properties`, {
+        const res = await fetch(`${process.env.BASE_URL}/api/properties`, {
             cache: "no-cache",
         });
 
@@ -100,9 +100,12 @@ const getProperties = async () => {
 
 const getLatestProperties = async () => {
     try {
-        const res = await fetch(`http://localhost:3000/api/properties/latest`, {
-            next: { tags: ["latest"] },
-        });
+        const res = await fetch(
+            `${process.env.BASE_URL}/api/properties/latest`,
+            {
+                next: { tags: ["latest"] },
+            }
+        );
 
         if (!res.ok) {
             let errMsg: string;
