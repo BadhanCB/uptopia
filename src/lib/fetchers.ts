@@ -139,10 +139,43 @@ const getLatestProperties = async () => {
     }
 };
 
+const getPropertyDetails = async (slug: string) => {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties/${slug}`
+        );
+
+        if (!res.ok) {
+            let errMsg: string;
+            errMsg = (await res.json()).message;
+            if (!errMsg) {
+                errMsg = res.statusText;
+            } else if (!errMsg) {
+                errMsg = "Failed to Fetch Latest Properties Data";
+            }
+
+            throw new Error(errMsg);
+            return;
+        }
+
+        return res.json();
+    } catch (error) {
+        let errMsg: string;
+        if (error instanceof Error) {
+            errMsg = error.message;
+        } else {
+            errMsg = "Failed to Fetch latest Properties Data";
+        }
+
+        throw new Error(errMsg);
+    }
+};
+
 export {
     signupWithEmailAndPassword,
     loginWithEmailAndPassword,
     createNewProperty,
     getProperties,
     getLatestProperties,
+    getPropertyDetails,
 };
