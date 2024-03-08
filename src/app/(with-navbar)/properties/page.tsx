@@ -1,14 +1,14 @@
-import { getProperties } from "@/lib/fetchers";
-import { GeoLocatedProperty } from "@/lib/types";
+// import { getProperties } from "@/lib/fetchers";
+// import { GeoLocatedProperty } from "@/lib/types";
 
 const Properties = async () => {
-    const properties: GeoLocatedProperty[] = await getProperties();
-    console.log(properties);
+    // const properties: GeoLocatedProperty[] = await getProperties();
+    // console.log(properties);
 
     return (
-        <div>
+        <main>
             <h1>Properties</h1>
-        </div>
+        </main>
     );
 };
 

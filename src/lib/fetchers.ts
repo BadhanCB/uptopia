@@ -74,7 +74,7 @@ const getProperties = async () => {
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`,
             {
-                cache: "no-cache",
+                cache: "no-store",
             }
         );
 
