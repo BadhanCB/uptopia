@@ -4,7 +4,7 @@ import { slugify } from "@/lib/utils";
 import { existsSync } from "fs";
 import { mkdir, unlink, writeFile } from "fs/promises";
 import { jwtVerify } from "jose";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import { extname } from "path";
@@ -188,6 +188,8 @@ export const POST = async (request: NextRequest) => {
         }
 
         revalidateTag("latest");
+        revalidatePath("/properties", "layout");
+
         return NextResponse.json(
             { message: "New Property Listing Created" },
             { status: 201 }

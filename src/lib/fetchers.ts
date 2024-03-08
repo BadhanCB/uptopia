@@ -72,10 +72,7 @@ const createNewProperty = async (formData: FormData) => {
 const getProperties = async () => {
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`,
-            {
-                cache: "no-store",
-            }
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`
         );
 
         if (!res.ok) {

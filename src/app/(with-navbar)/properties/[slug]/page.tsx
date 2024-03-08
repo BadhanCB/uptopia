@@ -5,10 +5,23 @@ import DetailsOverview from "@/components/PropertyDetailsPage/DetailsOverview";
 import ImageCard from "@/components/PropertyDetailsPage/ImageCard";
 import PropertyLocationCard from "@/components/PropertyDetailsPage/PropertyLocationCard";
 import { getPropertyDetails } from "@/lib/fetchers";
-import { PropertyDetails } from "@/lib/types";
+import { GeoLocatedProperty, PropertyDetails } from "@/lib/types";
 
 type Props = {
     params: { slug: string };
+};
+
+export const generateStaticParams = async () => {
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`,
+        {
+            next: { revalidate: 60 * 60 * 24 },
+        }
+    );
+
+    const data: GeoLocatedProperty[] = await res.json();
+
+    return data.map((pty) => ({ slug: pty.slug }));
 };
 
 const PropertyDetailsPage = async ({ params }: Props) => {
