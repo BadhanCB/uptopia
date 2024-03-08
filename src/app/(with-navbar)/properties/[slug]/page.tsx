@@ -1,5 +1,5 @@
 import { getPropertyDetails } from "@/lib/fetchers";
-import { PropertyDetails } from "@/lib/types";
+// import { PropertyDetails } from "@/lib/types";
 
 type Props = {
     params: { slug: string };
