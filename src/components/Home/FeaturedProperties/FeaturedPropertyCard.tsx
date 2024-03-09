@@ -37,7 +37,7 @@ const FeaturedPropertyCard = ({
 }: Props) => {
     return (
         <Link href={`/properties/${slug}`}>
-            <Card className="w-full h-full grid grid-cols-1 lg:grid-cols-2 overflow-hidden text-start hover:scale-105 hover:-translate-y-4 hover:shadow-xl hover:border-none transition duration-300">
+            <Card className="w-full h-full grid grid-cols-1 lg:grid-cols-2 overflow-hidden text-start hover:scale-105 hover:-translate-y-4 hover:shadow-xl transition duration-300">
                 <div className="h-56 lg:h-full w-full overflow-hidden relative">
                     <Image
                         placeholder="blur"
