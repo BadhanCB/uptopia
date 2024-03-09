@@ -1,8 +1,6 @@
 "use client";
-import { LatLngExpression } from "leaflet";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { TbCarGarage, TbCurrencyTaka } from "react-icons/tb";
-import { Button } from "@/components/ui/button";
 import { LuBath } from "react-icons/lu";
 import { TfiRulerAlt2 } from "react-icons/tfi";
 import { IoBedOutline } from "react-icons/io5";

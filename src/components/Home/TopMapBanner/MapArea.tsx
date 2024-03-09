@@ -6,7 +6,10 @@ import { GeoLocatedProperty } from "@/lib/types";
 import { useEffect, useState } from "react";
 import { getFeaturedProperties } from "@/lib/fetchers";
 const PropertyGeoLocationMarker = dynamic(
-    () => import("./PropertyGeoLocationMarker"),
+    () =>
+        import(
+            "@/components/shared/PropertyGeoLocationMarker/PropertyGeoLocationMarker"
+        ),
     {
         ssr: false,
         loading: () => <p>Loading...</p>,
