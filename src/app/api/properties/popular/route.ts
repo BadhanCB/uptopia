@@ -16,6 +16,7 @@ export const GET = async () => {
                 imageUrl: 1,
                 title: 1,
                 price: 1,
+                description: 1,
                 propertySize: 1,
                 bedrooms: 1,
                 bathrooms: 1,

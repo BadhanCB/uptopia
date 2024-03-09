@@ -38,6 +38,10 @@ export type Property = {
     createdAt: string;
 };
 
+export type PopularProperty = Property & {
+    description: string;
+};
+
 export type GeoLocatedProperty = Property & {
     geolocation: number[];
 };
