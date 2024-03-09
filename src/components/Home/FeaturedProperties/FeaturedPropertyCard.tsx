@@ -6,18 +6,18 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { TbCarGarage, TbCurrencyTaka } from "react-icons/tb";
 import { IoBedOutline } from "react-icons/io5";
 import { LuBath } from "react-icons/lu";
 import { TfiRulerAlt2 } from "react-icons/tfi";
-import { Property } from "@/lib/types";
+import { GeoLocatedProperty } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
 import { BsGeoAlt } from "react-icons/bs";
 import Link from "next/link";
 
 type Props = {
-    property: Property;
+    property: GeoLocatedProperty;
 };
 
 const FeaturedPropertyCard = ({

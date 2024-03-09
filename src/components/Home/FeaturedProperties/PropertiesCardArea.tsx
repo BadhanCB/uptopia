@@ -1,9 +1,9 @@
 import { getFeaturedProperties } from "@/lib/fetchers";
 import FeaturedPropertyCard from "./FeaturedPropertyCard";
-import { Property } from "@/lib/types";
+import { GeoLocatedProperty } from "@/lib/types";
 
 const PropertiesCardArea = async () => {
-    const properties: Property[] = await getFeaturedProperties();
+    const properties: GeoLocatedProperty[] = await getFeaturedProperties();
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-8 mt-12">

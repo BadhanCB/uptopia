@@ -1,4 +1,5 @@
 import connectMongoClient from "@/lib/mongodb";
+import { revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
 export const GET = async () => {
@@ -22,6 +23,7 @@ export const GET = async () => {
                 address: 1,
                 status: 1,
                 propertyType: 1,
+                geolocation: 1,
                 slug: 1,
                 realtor: 1,
                 createdAt: 1,
@@ -76,6 +78,8 @@ export const POST = async (request: NextRequest) => {
                 { status: 400 }
             );
         }
+
+        revalidateTag("featured");
 
         return NextResponse.json(
             { message: "Marked as Featured" },

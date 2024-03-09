@@ -7,6 +7,7 @@ import iconMarker from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { StaticImageData } from "next/image";
 import dynamic from "next/dynamic";
+import { GeoLocatedProperty } from "@/lib/types";
 const GeoLocPopup = dynamic(() => import("./GeoLocPopup"), {
     ssr: false,
     loading: () => <p>Loading...</p>,
@@ -24,21 +25,18 @@ const customMarkerIcon = L.icon({
 });
 
 type Props = {
-    property: {
-        img: StaticImageData | string;
-        title: string;
-        price: number;
-        geoLocation: LatLngExpression;
-        type: string;
-    };
+    property: GeoLocatedProperty;
 };
 
 const PropertyGeoLocationMarker = ({ property }: Props) => {
-    const { geoLocation, type } = property;
+    const { geolocation, propertyType } = property;
 
     return (
-        <Marker position={geoLocation} icon={customMarkerIcon}>
-            <Tooltip>{type}</Tooltip>
+        <Marker
+            position={geolocation as LatLngExpression}
+            icon={customMarkerIcon}
+        >
+            <Tooltip>{propertyType}</Tooltip>
             <GeoLocPopup property={property} />
         </Marker>
     );
