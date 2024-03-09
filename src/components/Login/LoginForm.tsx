@@ -43,6 +43,7 @@ const LoginForm = () => {
             setIsLoading(false);
             router.replace("/");
         } catch (error) {
+            console.log(error);
             let errMsg;
 
             if (error instanceof Error) {
