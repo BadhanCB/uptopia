@@ -9,14 +9,34 @@ import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
 import { extname } from "path";
 
-export const GET = async () => {
+export const GET = async (request: NextRequest) => {
     try {
+        const searctParams = request.nextUrl.searchParams;
+        const status = searctParams.get("status");
+        const type = searctParams.get("type");
+        const city = searctParams.get("city");
+        const price = searctParams.get("price");
+
+        let filter = {};
+        if (status) {
+            filter = { ...filter, status };
+        }
+        if (type) {
+            filter = { ...filter, propertyType: type };
+        }
+        if (city) {
+            filter = { ...filter, city };
+        }
+        if (price && price !== "0") {
+            filter = { ...filter, price: { $lte: parseInt(price) } };
+        }
+
         const client = await connectMongoClient();
         const propertiesCollection = client
             .db("uptopia")
             .collection("properties");
 
-        const cursor = propertiesCollection.find({}).project({
+        const cursor = propertiesCollection.find(filter).project({
             imageUrl: 1,
             title: 1,
             price: 1,

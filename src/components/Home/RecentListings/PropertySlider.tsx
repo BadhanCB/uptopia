@@ -1,10 +1,10 @@
 "use client";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
-import PropertyCard from "./PropertyCard";
 import { A11y, Autoplay, Navigation, Pagination } from "swiper/modules";
 import { useState } from "react";
 import { Property } from "@/lib/types";
+import PropertyCard from "@/components/shared/PropertyCard/PropertyCard";
 
 type Props = {
     latestProperties: Property[];

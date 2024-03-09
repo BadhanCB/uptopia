@@ -69,10 +69,20 @@ const createNewProperty = async (formData: FormData) => {
     return res.json();
 };
 
-const getProperties = async () => {
+type Props = {
+    status: string | string[];
+    type: string | string[];
+    city: string | string[];
+    price: string | string[];
+};
+
+const getProperties = async ({ status, type, city, price }: Props) => {
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?status=${status}&type=${type}&city=${city}&price=${price}`,
+            {
+                cache: "no-store",
+            }
         );
 
         if (!res.ok) {
