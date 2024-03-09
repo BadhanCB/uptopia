@@ -136,6 +136,78 @@ const getLatestProperties = async () => {
     }
 };
 
+const getPopularProperties = async () => {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties/popular`,
+            {
+                next: { revalidate: 60 * 60 * 24 * 7 },
+            }
+        );
+
+        if (!res.ok) {
+            let errMsg: string;
+            errMsg = (await res.json()).message;
+            if (!errMsg) {
+                errMsg = res.statusText;
+            } else if (!errMsg) {
+                errMsg = "Failed to Fetch popular Properties Data";
+            }
+
+            throw new Error(errMsg);
+            return;
+        }
+
+        return res.json();
+    } catch (error) {
+        let errMsg: string;
+        if (error instanceof Error) {
+            errMsg = error.message;
+        } else {
+            errMsg = "Failed to Fetch popular Properties Data";
+        }
+
+        throw new Error(errMsg);
+    }
+};
+
+const updateViewCount = async (slug: string) => {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties/popular`,
+            {
+                method: "POST",
+                body: JSON.stringify({ slug }),
+                headers: { "content-type": "application/json" },
+            }
+        );
+
+        if (!res.ok) {
+            let errMsg: string;
+            errMsg = (await res.json()).message;
+            if (!errMsg) {
+                errMsg = res.statusText;
+            } else if (!errMsg) {
+                errMsg = "Failed to Update View Count";
+            }
+
+            throw new Error(errMsg);
+            return;
+        }
+
+        return res.json();
+    } catch (error) {
+        let errMsg: string;
+        if (error instanceof Error) {
+            errMsg = error.message;
+        } else {
+            errMsg = "Failed to Update View Count";
+        }
+
+        throw new Error(errMsg);
+    }
+};
+
 const getPropertyDetails = async (slug: string) => {
     try {
         const res = await fetch(
@@ -175,4 +247,6 @@ export {
     getProperties,
     getLatestProperties,
     getPropertyDetails,
+    getPopularProperties,
+    updateViewCount,
 };

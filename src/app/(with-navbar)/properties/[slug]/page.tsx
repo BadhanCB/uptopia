@@ -6,6 +6,11 @@ import ImageCard from "@/components/PropertyDetailsPage/ImageCard";
 import PropertyLocationCard from "@/components/PropertyDetailsPage/PropertyLocationCard";
 import { getPropertyDetails } from "@/lib/fetchers";
 import { GeoLocatedProperty, PropertyDetails } from "@/lib/types";
+import dynamic from "next/dynamic";
+const UpdateViewCount = dynamic(
+    () => import("@/components/PropertyDetailsPage/UpdateViewCount"),
+    { ssr: false }
+);
 
 type Props = {
     params: { slug: string };
@@ -47,6 +52,7 @@ const PropertyDetailsPage = async ({ params }: Props) => {
         country,
         geolocation,
         realtor,
+        slug,
     } = propertyDetails;
 
     return (
@@ -82,6 +88,7 @@ const PropertyDetailsPage = async ({ params }: Props) => {
                         <ContactOptions realtor={realtor} />
                     </div>
                 </div>
+                <UpdateViewCount slug={slug} />
             </section>
         </main>
     );
