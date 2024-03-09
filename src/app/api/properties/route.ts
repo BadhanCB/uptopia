@@ -110,16 +110,19 @@ export const POST = async (request: NextRequest) => {
         const bathrooms = parseInt(formData.get("bathrooms")?.toString() || "");
         const garages = parseInt(formData.get("garages")?.toString() || "");
         const address = formData.get("address")?.toString();
-        const city = formData.get("city")?.toString();
-        const division = formData.get("division")?.toString();
+        const city = formData.get("city")?.toString()?.toLowerCase();
+        const division = formData.get("division")?.toString()?.toLowerCase();
         const zip = parseInt(formData.get("zip")?.toString() || "");
-        const country = formData.get("country")?.toString();
+        const country = formData.get("country")?.toString()?.toLowerCase();
         const latitude = parseFloat(formData.get("latitude")?.toString() || "");
         const longitude = parseFloat(
             formData.get("longitude")?.toString() || ""
         );
-        const status = formData.get("status")?.toString();
-        const propertyType = formData.get("propertyType")?.toString();
+        const status = formData.get("status")?.toString().toLowerCase();
+        const propertyType = formData
+            .get("propertyType")
+            ?.toString()
+            ?.toLowerCase();
 
         if (
             !image ||
