@@ -208,6 +208,41 @@ const updateViewCount = async (slug: string) => {
     }
 };
 
+const getFeaturedProperties = async () => {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties/featured`,
+            {
+                next: { tags: ["featured"] },
+            }
+        );
+
+        if (!res.ok) {
+            let errMsg: string;
+            errMsg = (await res.json()).message;
+            if (!errMsg) {
+                errMsg = res.statusText;
+            } else if (!errMsg) {
+                errMsg = "Failed to Fetch featured Properties Data";
+            }
+
+            throw new Error(errMsg);
+            return;
+        }
+
+        return res.json();
+    } catch (error) {
+        let errMsg: string;
+        if (error instanceof Error) {
+            errMsg = error.message;
+        } else {
+            errMsg = "Failed to Fetch featured Properties Data";
+        }
+
+        throw new Error(errMsg);
+    }
+};
+
 const getPropertyDetails = async (slug: string) => {
     try {
         const res = await fetch(
@@ -249,4 +284,5 @@ export {
     getPropertyDetails,
     getPopularProperties,
     updateViewCount,
+    getFeaturedProperties,
 };
