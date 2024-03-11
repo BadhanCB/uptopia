@@ -24,8 +24,8 @@ const Properties = async ({ searchParams }: Props) => {
 
     return (
         <main className="bg-gray-100">
-            <div className="wrapper py-4 md:py-8 lg:py-12 grid grid-cols-1 md:grid-cols-2 md:gap-6 xl:gap-8 md:h-[calc(100vh-82px)]">
-                <div className="overflow-y-auto overflow-x-hidden order-2 md:order-1">
+            <div className="wrapper py-4 md:py-8 lg:py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-6 xl:gap-8 md:h-[calc(100vh-82px)]">
+                <div className="overflow-y-auto overflow-x-hidden lg:col-span-2 order-2 md:order-1">
                     <h1>Properties</h1>
                     <FilterOptions />
                     <Suspense fallback={<p>Loading..</p>}>
