@@ -70,7 +70,7 @@ const PropertyCard = ({ property }: Props) => {
                 </CardHeader>
                 <CardContent className="pb-3">
                     <CardDescription className="flex gap-1 items-center">
-                        <FiMapPin /> {address}
+                        <FiMapPin className="min-w-max" /> {address}
                     </CardDescription>
                     <div className="flex flex-wrap items-center justify-between mt-3">
                         <p className="flex gap-1 items-center">
