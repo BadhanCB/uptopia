@@ -70,13 +70,18 @@ const createNewProperty = async (formData: FormData) => {
 };
 
 type Props = {
-    status: string | string[];
-    type: string | string[];
-    city: string | string[];
-    price: string | string[];
+    status?: string | string[];
+    type?: string | string[];
+    city?: string | string[];
+    price?: string | string[];
 };
 
-const getProperties = async ({ status, type, city, price }: Props) => {
+const getProperties = async ({
+    status = "",
+    type = "",
+    city = "",
+    price = "",
+}: Props) => {
     try {
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/properties?status=${status}&type=${type}&city=${city}&price=${price}`,
