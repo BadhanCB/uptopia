@@ -49,25 +49,25 @@ const cities = [
     {
         imgUrl: appartmentImg,
         title: "Dhaka",
-        slug: "/properties?city=dhaka",
+        slug: "/city/dhaka",
         totalPropertirs: 24,
     },
     {
         imgUrl: villaImg,
         title: "chittagong",
-        slug: "/properties?city=chittagong",
+        slug: "/city/chittagong",
         totalPropertirs: 6,
     },
     {
         imgUrl: officeImg,
         title: "rangpur",
-        slug: "/properties?city=rangpur",
+        slug: "/city/rangpur",
         totalPropertirs: 17,
     },
     {
         imgUrl: shopImg,
         title: "sylhet",
-        slug: "/properties?city=sylhet",
+        slug: "/city/sylhet",
         totalPropertirs: 28,
     },
 ];

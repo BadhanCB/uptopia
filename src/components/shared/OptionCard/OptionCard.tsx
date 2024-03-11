@@ -19,7 +19,7 @@ const OptionCard = ({
     return (
         <Link
             href={slug}
-            className={`${className} relative cursor-pointer text-gray-50 group overflow-hidden rounded shadow-xl`}
+            className={`${className} relative cursor-pointer text-gray-50 group overflow-hidden rounded shadow-xl hover:-translate-y-3 transition-transform duration-300`}
         >
             <div className="absolute h-full w-full -z-20">
                 <Image
